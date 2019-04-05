@@ -14,7 +14,7 @@ class PlugReceiver : BroadcastReceiver() {
             audioManager = context!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         }
         val state = intent!!.getIntExtra("state", -1)
-        /*when(state) {
+        when(state) {
             0 -> HeadsetUtils.speaker(audioManager!!)
             1 -> HeadsetUtils.headset(audioManager!!)
             else -> {
@@ -25,7 +25,10 @@ class PlugReceiver : BroadcastReceiver() {
                 ).show()
                 Log.e("PlugReceiver", "Unrecognised headset plug state!", Throwable())
             }
-        }*/
-        HeadsetUtils.headset(audioManager!!)
+        }
+        // Apply the changes by setting the volume to the current volume
+        // Fails in DND but to exit that you must change the volume later so meh.
+        audioManager!!.setStreamVolume(AudioManager.STREAM_MUSIC, audioManager!!.getStreamVolume(AudioManager.STREAM_MUSIC), 0)
+        //HeadsetUtils.headset(audioManager!!)
     }
 }
