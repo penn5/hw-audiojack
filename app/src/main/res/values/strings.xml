@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Audio Switcher</string>
+    <string name="fix_it">Normal</string>
+    <string name="break_it">Speakers only</string>
+</resources>
