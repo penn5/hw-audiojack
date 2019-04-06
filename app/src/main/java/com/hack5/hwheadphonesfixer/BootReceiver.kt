@@ -9,6 +9,7 @@ import android.widget.Toast
 class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         if (!done) {
+            done = true
             val filter = IntentFilter(Intent.ACTION_HEADSET_PLUG)
             val plugReceiver = PlugReceiver()
             context!!.registerReceiver(plugReceiver, filter)
